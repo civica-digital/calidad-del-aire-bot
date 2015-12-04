@@ -2,7 +2,7 @@ desc 'send tweet '
 task send_tweet: :environment do
 	
     @client = create_client
-    @client.update("I'm testing in task again!")
+    @client.update("I'm testing in task again! at #{Time.now.strftime("%I:%M:%S %z")}")
 end
 
 def create_client

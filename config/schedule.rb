@@ -18,3 +18,17 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+every :day, at: '11am' do
+  # specify the task name as a string
+  rake 'send_tweet'
+end
+
+every 1.hours do
+  # specify the task name as a string
+  rake 'send_tweet'
+end
+
+every '0 */5 * * *' do
+  rake 'send_tweet'
+end
