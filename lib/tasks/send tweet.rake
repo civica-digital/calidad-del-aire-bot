@@ -1,4 +1,6 @@
+require 'net/http'
 desc 'send tweet '
+
 task send_tweet: :environment do
 	
 	get_data
