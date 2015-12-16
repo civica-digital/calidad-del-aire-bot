@@ -5,7 +5,7 @@ task send_tweet: :environment do
 	
 	get_data
     @client = create_client
-    @client.update("#{Time.now.strftime("%I:%M:%S %z")} #{value} +info http://civica-digital.github.io/calidad-del-aire-webapp")
+    @client.update("#{Time.now.strftime("%I:%M:%S %z")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
 end
 def get_data
 
