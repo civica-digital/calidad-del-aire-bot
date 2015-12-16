@@ -4,17 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   def index
     
-    url = URI.parse('http://104.197.214.72:8000/cities-pollutant-timeline?geographical_zone=MXMEX-HGM&dateUnit=hour&now=1
-')
-    req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-      http.request(req)
-    }
-    puts res.body
-
-
-   # @client = create_client
-   # @client.update("I'm testing 2!")
+    @client = create_client
+    @client.update("I'm testing 2!")
     #tuit= client.search("@algo -rt", lang: "es").first.text 
     #new_tuit= tuit.dup.sub! '@algo', '@otro algo'
     #client.update(new_tuit)
