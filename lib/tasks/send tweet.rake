@@ -3,7 +3,8 @@ desc 'send tweet '
 
 task send_tweet: :environment do
 	  @client = create_client
-    @client.update("#{Time.now.strftime("%I:%M:%S %z")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
+    t=Time.now -21600
+    @client.update("#{t.strftime("%I:%M:%S")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
 end
 
 
@@ -26,15 +27,23 @@ def get_data
 		get_data
 	end
 end
+def dictionary(name)
+  if name== "PM10" || name == "PM25"
+    message="Polvo en el aire"
+  elsif name=="O3"
+    message="Ozono"
+  elsif name=="NO" || name == "SO"
+    message ="Producto de la quema de combustibles"
+  end
+end
 
-def get_ramdon_message (val)
-
-  ary = ["Según la OMS la calidad del aire es:#{get_quality(val)} ", "En estos momentos la calidad del aire es #{get_quality(val) }", "Se detecta como #{get_quality(val)} la calidad del aire según la OMS"] 
+def get_ramdon_message (val,name)
+  ary = ["Según la OMS la calidad del aire esta:#{get_quality(val)} por #{dictionary(name)} ", "En estos momentos la calidad del aire esta #{get_quality(val)} por #{dictionary(name)}. OMS", "Se detecta como #{get_quality(val)} la calidad del aire por por #{dictionary(name)} según la OMS"] 
   return ary.sample
 end
 
 def get_quality(value)
-    return (value.to_f>1) ? "encima" : "regular";
+    return (value.to_f>1) ? "por encima del estandar" : "regular al estándar";
 end
 
 def create_client
