@@ -3,8 +3,10 @@ desc 'send tweet '
 
 task send_tweet: :environment do
 	  @client = create_client
-    t=Time.now -21600
-    @client.update("#{t.strftime("%I:%M:%S")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
+    t=Time.now 
+    time=t-21600
+    puts time
+    @client.update("#{time.strftime("%I:%M:%S")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
 end
 
 
@@ -22,7 +24,7 @@ def get_data
     name= pollutant['pollutant']
     
     if ( value != "nan")
-      return  get_ramdon_message(value)
+      return  get_ramdon_message(value,name)
 	else
 		get_data
 	end
