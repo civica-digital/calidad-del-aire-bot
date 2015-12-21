@@ -34,13 +34,13 @@ def dictionary(name)
     message="Polvo en el aire"
   elsif name=="O3"
     message="Ozono"
-  elsif name=="NO" || name == "SO"
+  elsif name=="NO" || name == "SO" || name == "SO2" || name=="NO2"
     message ="Producto de la quema de combustibles"
   end
 end
 
 def get_ramdon_message (val,name)
-  ary = ["Según la OMS la calidad del aire esta:#{get_quality(val)} por #{dictionary(name)} ", "En estos momentos la calidad del aire esta #{get_quality(val)} por #{dictionary(name)}. OMS", "Se detecta como #{get_quality(val)} la calidad del aire por por #{dictionary(name)} según la OMS"] 
+  ary = ["Según la OMS la calidad del aire esta:#{get_quality(val)} por #{dictionary(name)} ", "En estos momentos la calidad del aire esta #{get_quality(val)} por #{dictionary(name)}. OMS", "Se detecta como #{get_quality(val)} la calidad del aire por #{dictionary(name)} según la OMS"] 
   return ary.sample
 end
 
