@@ -11,7 +11,6 @@ end
 
 
 def get_data
-
   url = URI.parse('http://104.197.214.72:8000/cities-pollutant-timeline?geographical_zone=MXMEX-HGM&dateUnit=hour&now=1
   ')
     req = Net::HTTP::Get.new(url.to_s)
@@ -56,7 +55,6 @@ def create_client
       config.consumer_secret     = "#{ ENV["TW_CONSUMER_SECRET"] }"
       config.access_token        = "#{ ENV["TW_ACCESS_TOKEN"] }"
       config.access_token_secret = "#{ ENV["TW_ACCESS_TOKEN_SECRET"] }" 
-
     end
 end
 
