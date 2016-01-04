@@ -9,7 +9,6 @@ task send_tweet: :environment do
     @client.update("#{time.strftime("%I:%M:%S")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
 end
 
-
 def get_data
   url = URI.parse('http://104.197.214.72:8000/cities-pollutant-timeline?geographical_zone=MXMEX-HGM&dateUnit=hour&now=1
   ')
@@ -28,6 +27,7 @@ def get_data
     get_data
   end
 end
+
 def dictionary(name)
   if name== "PM10" || name == "PM25"
     message="Polvo en el aire"
@@ -38,8 +38,6 @@ def dictionary(name)
   end
 end
 
-
-​
 def get_ramdon_message (val,name)
   ary = ["Según la OMS la calidad del aire está: #{get_quality(val)} por #{dictionary(name)} ", "En estos momentos la calidad del aire está #{get_quality(val)} por #{dictionary(name)}. OMS", "Se detecta #{get_quality(val)} la calidad del aire por #{dictionary(name)} según la OMS"] 
   return ary.sample
@@ -57,4 +55,3 @@ def create_client
       config.access_token_secret = "#{ ENV["TW_ACCESS_TOKEN_SECRET"] }" 
     end
 end
-
