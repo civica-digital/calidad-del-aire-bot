@@ -6,7 +6,7 @@ task send_tweet: :environment do
     t=Time.now 
     time=t-21600
     puts time
-    @client.update("#{time.strftime("%I:%M:%S")} #{get_data} +info http://civica-digital.github.io/calidad-del-aire-webapp")
+    @client.update("#{time.strftime("%I:%M:%S")} #{get_data} +info http://respiraciudad.org")
 end
 
 def get_data
@@ -48,6 +48,7 @@ def get_quality(value)
 end
 
 def create_client
+  
     return Twitter::REST::Client.new do |config|
       config.consumer_key        = "#{ ENV["TW_CONSUMER_KEY"] }"
       config.consumer_secret     = "#{ ENV["TW_CONSUMER_SECRET"] }"
